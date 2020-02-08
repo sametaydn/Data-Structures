@@ -1,0 +1,47 @@
+Given a string, reverse it using stack. For example “GeeksQuiz” should be converted to “ziuQskeeG”.
+Following is simple algorithm to reverse a string using stack.
+1) Create an empty stack.
+2) One by one push all characters of string to stack.
+3) One by one pop all characters from stack and put 
+   them back to string.
+
+****************************************************************************************************
+
+#include <stdio.h>
+#include <stdlib.h>
+#define maxSize 100
+
+int top = -1;
+char stack[maxSize];
+
+char push(char item)
+    {
+	if(top == (maxSize  -1))
+		printf("Stack Overflow\n");
+	else
+		stack[++top] =item;
+    }
+
+char pop()
+    {
+	if(top == -1)
+		printf("Stack Underflow\n");
+	else
+		return stack[top--];
+    }
+
+int main()
+{
+    char str[20];
+	int i;
+	printf("Enter the string : " );
+	gets(str);
+	for(i=0;i<strlen(str);i++)
+		push(str[i]);
+	for(i=0;i<strlen(str);i++)
+		str[i]=pop();
+    printf("Reversed string is : ");
+	puts(str);
+
+    return 0;
+}
