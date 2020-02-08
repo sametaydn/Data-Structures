@@ -1,0 +1,121 @@
+Given an expression string exp , write a program to examine whether the pairs and the orders of “{“,”}”,”(“,”)”,”[“,”]” are correct in exp.
+
+Example:
+
+Input: exp = “[()]{}{[()()]()}”
+Output: Balanced
+Input: exp = “[(])”
+Output: Not Balanced
+
+**********************************************
+
+#include <stdio.h>
+#include <stdlib.h>
+#define maxSize 100
+
+int top = -1;
+char stack[maxSize];
+
+int isEmpty()
+{
+    if(top==-1)
+        return 1;
+    else
+        return 0;
+}
+
+int isFull(){
+
+    if(top == maxSize){
+
+        return 1;
+
+    }
+    else{
+
+        return 0;
+    }
+}
+
+int push(char data){
+
+    if(!isFull()){
+
+        top = top + 1;
+        stack[top] = data;
+
+    }
+    else{
+
+        printf("Could not insert data, it is full.");
+
+    }
+}
+
+int pop(){
+
+    if(!isFull()){
+
+        char data = stack[top];
+        top = top - 1;
+        return data;
+
+    }
+    else{
+
+        printf("Stack is empty");
+    }
+
+}
+
+int main()
+{
+    int i;
+    int parantez;                          
+
+    char girdi[100] = {'[','(',')',']','{','{','[','(',')','(',')',']','(',')','}'};
+
+    printf("%d ",strlen(girdi));
+    char ch;
+    char out;
+
+    for(i = 0; i<strlen(girdi); i++)
+    {
+            ch=girdi[i];
+            if(ch=='(' || ch=='[' || ch=='{')
+                push(ch);
+            else if(ch==')')
+                {
+                    out=pop();
+                    if(out=='(')
+                        continue;
+                    else
+                        break;
+                }
+                else if(ch==']')
+                {
+                    out=pop();
+                    if(out=='[')
+                    continue;
+                    else
+                    break;
+                }
+                else if(ch=='}')
+                {
+                    out=pop();
+                    if(out=='{')
+                    continue;
+                    else
+                    break;
+                }
+
+    }
+    
+    if(!isEmpty())
+        printf("Not balanced");
+    else
+        printf("Balanced");
+
+
+    return 0;
+}
