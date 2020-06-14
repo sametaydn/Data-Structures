@@ -1,4 +1,4 @@
-Given an expression string exp , write a program to examine whether the pairs and the orders of “{“,”}”,”(“,”)”,”[“,”]” are correct in exp.
+Given an expression string exp ,write a program to examine whether the pairs and the orders of “{“,”}”,”(“,”)”,”[“,”]” are correct in exp.
 
 Example:
 
@@ -7,7 +7,7 @@ Output: Balanced
 Input: exp = “[(])”
 Output: Not Balanced
 
-**********************************************
+*****************************************************************************************************************************************
 
 #include <stdio.h>
 #include <stdlib.h>
