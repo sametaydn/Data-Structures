@@ -1,0 +1,51 @@
+import java.util.*;
+public class ShuffleCards {
+    public static void main(String[] args) {
+        
+        LinkedList<Integer> cards = new LinkedList<Integer>();
+        for(int i=1; i<=10; i++)
+        {
+            cards.add(i);
+        }
+        ListIterator<Integer> iterator=cards.listIterator();
+        while(iterator.hasNext())
+        {
+         System.out.print(" "+iterator.next());
+        }System.out.println(" ");
+        
+        LinkedList<Integer> half1 = new LinkedList<Integer>();
+        LinkedList<Integer> half2 = new LinkedList<Integer>();
+        LinkedList<Integer> half3 = new LinkedList<Integer>();
+        //halving...
+       for(int j=0; j<cards.size()/2;j++){
+          half1.add(cards.get(j));
+       }
+       //to get numbers after cards/2
+       for(int j=cards.size()-1; j>=cards.size()/2; j--){
+          half3.add(cards.get(j));
+        } 
+       //reversing linkedlist to show like this 6,7,8,9,10.
+       for (int i = half3.size() - 1; i >= 0; i--) { 
+            half2.add(half3.get(i)); 
+       }
+       //merge of linkedlists
+        LinkedList<Integer> shuffled = new LinkedList<Integer>();
+        for(int i=0;i<half1.size();i++)
+        {
+           shuffled.add(half2.get(i));
+           shuffled.add(half1.get(i));
+        }
+        for(int s: half1)
+        {
+            System.out.print(" "+s);
+        }   System.out.println(" ");
+        for(int s1: half2)
+        {
+            System.out.print(" "+s1);
+        } System.out.println(" ");
+        for(int s2: shuffled)
+        {
+            System.out.print(" "+s2);
+        } System.out.println(" ");
+    }
+}
